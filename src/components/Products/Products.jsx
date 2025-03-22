@@ -1,29 +1,16 @@
 import React from 'react';
 import './Products.css';
 
-const products = [
-  {
-
-    id: 1,
-    name: 'Camiseta Grafitti',
-    price: '$25',
-    image: 'https://images.unsplash.com/photo-1629994486790-b74b2bf3c1d2'
-  },
-  {
-    id: 2,
-    name: 'Sudadera Urbana',
-    price: $45,
-    image: 'https://images.unsplash.com/photo-1633432925650-03e236407d43'
-  },
-  {
-    id: 3,
-    name: 'Gorra callejera',
-    price: '$20',
-    image: 'https://images.unsplash.com/photo-1622445462291-6f4b0983b77d'
-  }
-];
-
 const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products')
+      .then(res => res.json())
+      .then(data => setProducts(data))
+      .catch(err => console.error('Error al cargar productos:', err));
+  }, []);
+
     return (
         <section className="products" id="products">
             <h2 className="products__title">Productos Destacados</h2>
