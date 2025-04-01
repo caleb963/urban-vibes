@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 import './Products.css';
+import AddProduct from './AddProduct';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
+  const fetchProducts = () => {
     fetch('http://localhost:5000/api/products')
       .then(res => res.json())
       .then(data => setProducts(data))
-      .catch(err => console.error('Error al cargar productos:', err));
+      .catch(err => console.error('Error:', err));
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
+
+  const handleAddProduct = newProduct = (newProduct) => {
+    setProducts([newProduct, ...products]);
+  };
 
     return (
         <section className="products" id="products">
