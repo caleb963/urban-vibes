@@ -1,6 +1,6 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Products.css';
-import AddProduct from './AddProduct';
+import AddProduct from '../AddProduct'; // ajusta el path según dónde esté tu archivo
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -16,26 +16,28 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const handleAddProduct = newProduct = (newProduct) => {
+  const handleAddProduct = (newProduct) => {
     setProducts([newProduct, ...products]);
   };
 
-    return (
-        <section className="products" id="products">
-            <h2 className="products__title">Productos Destacados</h2>
-            <div className="products__list">
-                {products.map(product => (
-                    <div key={product.id} className="products__item">
-                        <img src={product.image} alt={product.name} className="products__image"/>
-                        <h3 className="products__name">{product.name}</h3>
-                        <p className="products__price">{product.price}</p>
-                    </div>
-                ))}
-            </div>
+  return (
+    <section className="products" id="products">
+      <h2 className="products__title">Productos Destacados</h2>
 
-        </section>
-    );
+      {/* Formulario para añadir productos */}
+      <AddProduct onAdd={handleAddProduct} />
+
+      <div className="products__list">
+        {products.map(product => (
+          <div key={product._id || product.id} className="products__item">
+            <img src={product.image} alt={product.name} className="products__image" />
+            <h3 className="products__name">{product.name}</h3>
+            <p className="products__price">{product.price}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Products;
-
