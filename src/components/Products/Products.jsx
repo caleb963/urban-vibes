@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Products.css';
-import AddProduct from '../AddProduct'; // ajusta el path según dónde esté tu archivo
+import AddProduct from './AddProduct';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
