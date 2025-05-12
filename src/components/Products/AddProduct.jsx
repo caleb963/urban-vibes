@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './AddProcut.css';
+import './AddProduct.css';
 
 const AddProduct = ({ onAdd }) => {
     const [formData, setFormData] = useState({
