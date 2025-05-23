@@ -49,8 +49,73 @@ const defaultProducts = [
     name: 'Graphic Socks',
     price: 12.00,
     image: 'https://images.unsplash.com/photo-1611691548738-e79ce2b66bdf?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 9,
+    name: 'Streetwear Cap',
+    price:'22.00',
+       image: 'https://images.unsplash.com/photo-1618354691372-bf991db92a7d?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 10, 
+    name : 'Patterned Socks',
+    price: "$12.00",
+    image: 'https://images.unsplash.com/photo-1525904097878-94e7d73d0b1a?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 11,
+    name: 'Layered Chains',
+    price: '$30.00',
+    image: 'https://images.unsplash.com/photo-1618354691404-cb9a2aaf3e1c?auto=format&fit=crop&w=600&q=80',
+  }, 
+  {
+   id: 12,
+   name: 'Graffiti Hoodie',
+   price: 'https://images.unsplash.com/photo-1618354691402-f1173935ae3e?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 13, 
+    name: 'Tie-dye Shirt',
+    price: '$27.00',
+    image: 'https://images.unsplash.com/photo-1582727461474-9a1cb1036485?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 14,
+    name: 'Minimalist Tote Bag',
+    price: '$25.00',
+    image: 'https://images.unsplash.com/photo-1588579239589-f8e1f48b9e38?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 15,
+    name: 'Flannel Shirt',
+    price: '$39.00',
+    image: 'https://images.unsplash.com/photo-1571902943202-507ec2618e56?auto=format&fit=crop&w=600&q=80',
+  },
+  {
+    id: 16,
+    name: 'Street Utility Vest',
+    price: '$70.00',
+    image: 'https://images.unsplash.com/photo-1609220136736-66d89a7f8a94?auto=format&fit=crop&w=600&q=80',
   }
 ];
+
+function Products() {
+  const [products, setProducts] = useState(defaultProducts);
+
+  // Dummy AddProduct component for demonstration
+  // Replace with your actual AddProduct import/component
+  const AddProduct = ({ onAdd }) => (
+    <button onClick={() => onAdd({
+      id: products.length + 1,
+      name: 'Nuevo Producto',
+      price: '$0.00',
+      image: ''
+    })}>Agregar Producto</button>
+  );
+
+  const handleAddProduct = (newProduct) => {
+    setProducts([...products, newProduct]);
+  };
 
   return (
     <section className="products" id="products">
@@ -70,6 +135,6 @@ const defaultProducts = [
       </div>
     </section>
   );
-};
+}
 
 export default Products;

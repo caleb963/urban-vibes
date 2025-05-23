@@ -20,6 +20,9 @@ mongoose.connect(process.env.MONGO_URI, {
 })
   .then(() => {
     console.log('🟢 MongoDB conectado');
+    app.get('/', (req, res) => {
+      res.send('Backend server is running');
+    });
     app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
   })
   .catch((err) => {
