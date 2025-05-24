@@ -43,11 +43,12 @@ const defaultProducts = [
     id: 7,
     name: 'Urban Beanie',
     price: '$19.00',
+    image: 'https://images.unsplash.com/photo-1618221647564-7ea73c11e10f?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 8,
     name: 'Graphic Socks',
-    price: 12.00,
+    price: '$12.00',
     image: 'https://images.unsplash.com/photo-1611691548738-e79ce2b66bdf?auto=format&fit=crop&w=600&q=80',
   },
   {
@@ -71,7 +72,8 @@ const defaultProducts = [
   {
    id: 12,
    name: 'Graffiti Hoodie',
-   price: 'https://images.unsplash.com/photo-1618354691402-f1173935ae3e?auto=format&fit=crop&w=600&q=80',
+   price: '$49.00',
+   image: 'https://images.unsplash.com/photo-1618354691402-f1173935ae3e?auto=format&fit=crop&w=600&q=80',
   },
   {
     id: 13, 
@@ -99,37 +101,24 @@ const defaultProducts = [
   }
 ];
 
-function Products() {
-  const [products, setProducts] = useState(defaultProducts);
-
-  // Dummy AddProduct component for demonstration
-  // Replace with your actual AddProduct import/component
-  const AddProduct = ({ onAdd }) => (
-    <button onClick={() => onAdd({
-      id: products.length + 1,
-      name: 'Nuevo Producto',
-      price: '$0.00',
-      image: ''
-    })}>Agregar Producto</button>
-  );
-
-  const handleAddProduct = (newProduct) => {
-    setProducts([...products, newProduct]);
-  };
+const Products = ({ onAddToCart }) => {
+  const [products] = useState(defaultProducts);
 
   return (
     <section className="products" id="products">
       <h2 className="products__title">Productos Destacados</h2>
-
-      {/* Formulario para añadir productos */}
-      <AddProduct onAdd={handleAddProduct} />
-
       <div className="products__list">
         {products.map(product => (
-          <div key={product._id || product.id} className="products__item">
+          <div key={product.id} className="products__item">
             <img src={product.image} alt={product.name} className="products__image" />
             <h3 className="products__name">{product.name}</h3>
             <p className="products__price">{product.price}</p>
+            <button 
+              className="products__button"
+              onClick={() => onAddToCart(product)}     
+            >
+              Add to Cart
+            </button>
           </div>
         ))}
       </div>

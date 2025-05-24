@@ -13,11 +13,15 @@ function App() {
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
       const existing = prevCart.find((item) => item.id === product.id);
+
     if (existing) {
       return prevCart.map((item) => 
-        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === product.id
+       ? { ...item, quantity: item.quantity + 1 }
+       : item
       );
     }  
+
     return [...prevCart, { ...product, quantity: 1}];
    });
   };
@@ -36,7 +40,11 @@ function App() {
       <Header />
       <Hero />
       <Products onAddToCart={handleAddToCart} />
-      <Cart cart
+      <Cart
+       cartItems={cart}
+       onRemove={handleRemoveFromCart}
+       onClear={handleClearCart}
+       />
       <ContactForm />
     </div>
   );
