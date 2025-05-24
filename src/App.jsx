@@ -4,10 +4,14 @@ import Hero from './components/Hero/Hero';
 import Products from './components/Products/Products';
 import ContactForm from './components/ContactForm/ContactForm';
 import Cart from './components/Cart/Cart';
+import { useEffect } from 'react';
 
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem('cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
   // Function to add a product to the cart
   const handleAddToCart = (product) => {
@@ -25,6 +29,10 @@ function App() {
     return [...prevCart, { ...product, quantity: 1}];
    });
   };
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   // Function to remove a product from the cart
   const handleRemoveFromCart = (id) => {
@@ -51,3 +59,4 @@ function App() {
 }
 
 export default App;
+

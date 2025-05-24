@@ -2,11 +2,17 @@ import React from 'react';
 import './Cart.css';
 
 const Cart = ({ cartItems, onRemove, onClear }) => {
-    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalItems = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const totalPrice = cartItems.reduce((sum, item) => {
+    const priceNumber = parseFloat(item.price.replace('$', ''));
+    return sum + priceNumber * item.quantity;
+  }, 0);
 
     return (
         <section className="cart">
-            <h2>Cart</h2>
+            <h2>🛒</h2>
+
             {cartItems.length === 0 ? (
                 <p>The cart is empty.</p>
             ) : (
@@ -23,7 +29,11 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
                             </li>
                         ))}
                     </ul>
-                    <p className="cart__total">Total: ${total.toFixed(2)}</p>
+                    <div className='cart__summary'>
+                        <p><strong>Total de articulos:</strong> {totalItems}</p>
+                        <p><strong>Total a pagar:</strong> ${totalPrice.toFixed(2)}</p>
+                    </div>
+                    
                     <button className="cart_clear" onClick={onClear}>Empty Cart</button>
                 </>
             )}
