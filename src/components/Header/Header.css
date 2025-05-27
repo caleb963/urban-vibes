@@ -17,7 +17,7 @@
 }
 
 .header__logo-img {
-    width: 40px;
+    width: 60px;
     height: auto;
     border-radius: 4px;
 }
@@ -60,4 +60,15 @@
     border-radius: 50%;
     font-size: 0.75rem;
     padding: 2px 6px;
+}
+
+.cart-icon {
+    width: 28px;
+    height: 28px;
+    color: #f3f4f6;
+    transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);
 }

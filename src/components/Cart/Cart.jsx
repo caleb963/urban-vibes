@@ -11,7 +11,7 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
 
     return (
         <section className="cart">
-            <h2>🛒</h2>
+            <h2>Cart</h2>
 
             {cartItems.length === 0 ? (
                 <p>The cart is empty.</p>
@@ -31,7 +31,6 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
                     </ul>
                     <div className='cart__summary'>
                         <p><strong>Total de articulos:</strong> {totalItems}</p>
-                        <p><strong>Total a pagar:</strong> ${totalPrice.toFixed(2)}</p>
                     </div>
                     
                     <button className="cart_clear" onClick={onClear}>Empty Cart</button>

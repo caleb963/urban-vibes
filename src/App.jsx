@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Products from './components/Products/Products';
 import ContactForm from './components/ContactForm/ContactForm';
 import Cart from './components/Cart/Cart';
-import { useEffect } from 'react';
 
 
 function App() {
@@ -30,12 +29,7 @@ function App() {
    });
   };
 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  // Function to remove a product from the cart
-  const handleRemoveFromCart = (id) => {
+  const handleRemoveCart = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
@@ -43,9 +37,16 @@ function App() {
     setCart([]);
   };
 
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const cartCount = cart.reduce(( sum, item) => sum + item.quantity, 0);
+
   return (
     <div className="app-container">
-      <Header />
+
+      <Header cartCount={cartCount} />
       <Hero />
       <Products onAddToCart={handleAddToCart} />
       <Cart
