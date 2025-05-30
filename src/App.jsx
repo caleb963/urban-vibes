@@ -29,7 +29,7 @@ function App() {
    });
   };
 
-  const handleRemoveCart = (id) => {
+  const handleRemoveFromCart = (id) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
