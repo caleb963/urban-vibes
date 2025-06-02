@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
-import logo from '../../assets/abissal_logo.png'; // Assuming you have a logo image in the assets folder
+import logo from '../../assets/abissal_logo.png';
+import { Link } from 'react-router-dom';
 
 const Header = ({ cartCount }) => {
     return (
