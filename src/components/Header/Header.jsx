@@ -12,7 +12,7 @@ const Header = ({ cartCount }) => {
 
             <nav className="header__nav">
                 <a href="#products" className="header__link">Products</a>
-                <a href="contact" className="header__link">Contact</a>
+                <a href="#contact" className="header__link">Contact</a>
 
                 <div className="cart-indicator" title="svg cart">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none"

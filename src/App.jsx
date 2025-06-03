@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
@@ -21,8 +20,7 @@ function App() {
     if (existing) {
       return prevCart.map((item) => 
         item.id === product.id
-       ? { ...item, quantity: item.quantity + 1 }
-       : item
+       ? { ...item, quantity: item.quantity + 1 } : item
       );
     }  
 
@@ -45,13 +43,8 @@ function App() {
   const cartCount = cart.reduce(( sum, item) => sum + item.quantity, 0);
 
   return (
-    <Router>
     <div className="app-container">
       <Header cartCount={cartCount} />
-
-    <Routes>
-      <Route path="/" element={
-        <>
       <Hero />
       <Products onAddToCart={handleAddToCart} />
       <Cart
@@ -59,13 +52,10 @@ function App() {
        onRemove={handleRemoveFromCart}
        onClear={handleClearCart}
        />
-       </>
-       } />
-      <ContactForm />
-      <Route path="/contact" element={<ContactForm />} />
-      </Routes>
+      <div id="contact">
+        <ContactForm />
+      </div>
     </div>
-    </Router>
   );
 }
 

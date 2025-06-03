@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Products.css';
+import Hoodie1 from '../../assets/Hoodie1.jpeg';
 
 
 const defaultProducts = [
@@ -7,7 +8,7 @@ const defaultProducts = [
   id: 1,
   name: 'Streetwear Hoodie',
   price: '$45.00',
-  image: 'https://images.unsplash.com/photo-1616531770192-60b5d65e57ba?auto=format&fit=crop&w=600&q=80',
+  image: Hoodie1,
   },
   {
     id: 2,
