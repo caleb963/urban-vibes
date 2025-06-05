@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Products.css';
-import Hoodie1 from '@/assets/Hoodie1.jpeg';
-
+import Hoodie1 from '../../assets/images/Hoodie1.png';
 
 const defaultProducts = [
   {

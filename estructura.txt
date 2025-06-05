@@ -3,6 +3,7 @@ dist/
 eslint.config.js
 estructura.txt
 index.html
+jsconfig.json
 node_modules/
 package.json
 package-lock.json
@@ -7538,7 +7539,7 @@ abissal_logo.png
 Background.png
 css/
 fonts/
-Hoddie1.jpeg
+images/
 
 ./src/assets/css:
 styles.css
@@ -7546,6 +7547,24 @@ styles.css
 ./src/assets/fonts:
 info.txt
 street soul.ttf
+
+./src/assets/images:
+Beanie-7.png
+Cargo-pants6.png
+denim-jacket4.png
+flannel-shirt15.png
+Graffiti-Socks8.png
+Grafitti-Hoddie12.png
+Grafitti-Shirt3.png
+Hoddie1.png
+Joggers2.png
+layered-chain11.png
+pattern-socks10.png
+Retro-Sneakers5.png
+street-vest.png
+tie_dye-shirt13.png
+tote-bag14.png
+urban-cap9.png
 
 ./src/components:
 Cart/
