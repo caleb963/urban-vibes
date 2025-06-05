@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import './Products.css';
-import Hoodie1 from '../../assets/images/Hoodie1.png';
+import Hoodie1 from '@assets/images/Hoddie1.png';
+import Joggers2 from '@assets/images/Joggers2.png';
+import Shirt3 from '@assets/images/Grafitti-Shirt3.png';
+import Jacket4 from '@assets/images/denim-jacket4.png';
+import Sneakers5 from '@assets/images/Retro-Sneakers5.png'
+import Cargo6 from '@assets/images/Cargo-pants6.png';
+import Beanie7 from '@assets/images/Beanie-7.png';
+import Socks8 from '@assets/images/Graffiti-Socks8.png'
+import Cap9 from '@assets/images/urban-cap9.png';
+import Socks10 from '@assets/images/pattern-socks10.png';
+import Chains11 from '@assets/images/layered-chain11.png';
+import Hoddie12 from '@assets/images/Grafitti-Hoddie12.png';
+import TieDye13 from '@assets/images/tie_dye-shirt13.png';
+import totebag14 from '@assets/images/tote-bag14.png';
+import Shirt15 from '@assets/images/flannel-shirt15.png';
+import vest16 from '@assets/images/street-vest.png';
 
 const defaultProducts = [
   {
@@ -13,91 +28,91 @@ const defaultProducts = [
     id: 2,
     name: 'Urban Joggers',
     price: '$38.00',
-    image: 'https://images.unsplash.com/photo-1618354691373-bd975f6b6e67?auto=format&fit=crop&w=600&q=80',
+    image: Joggers2,
   },
   {
     id: 3,
     name: 'Grafitti T-Shirt',
     price: '$29.00',
-    image: 'https://images.unsplash.com/photo-1618354691153-6e1aa64e05a1?auto=format&fit=crop&w=600&q=80',
+    image: Shirt3,
   },
   {
     id: 4,
     name: 'Oversized Denim Jacket',
     price: '$65.00',
-    image: 'https://images.unsplash.com/photo-1520974742444-94fbd7c52708?auto=format&fit=crop&w=600&q=80',
+    image: Jacket4,
   },
   {
     id: 5,
     name: 'Retro Sneakers',
     price: '$85.00',
-    image: 'https://images.unsplash.com/photo-1602810313335-f4b56c7b4fdf?auto=format&fit=crop&w=600&q=80',
+    image: Sneakers5,
   },
   {
     id: 6,
     name: 'Cargo Pants',
     price: '$42.00',
-    image:'https://images.unsplash.com/photo-1552424493-16a1a1f13e85?auto=format&fit=crop&w=600&q=80',
+    image: Cargo6,
   },
   {
     id: 7,
     name: 'Urban Beanie',
     price: '$19.00',
-    image: 'https://images.unsplash.com/photo-1618221647564-7ea73c11e10f?auto=format&fit=crop&w=600&q=80',
+    image: Beanie7,
   },
   {
     id: 8,
     name: 'Graphic Socks',
     price: '$12.00',
-    image: 'https://images.unsplash.com/photo-1611691548738-e79ce2b66bdf?auto=format&fit=crop&w=600&q=80',
+    image: Socks8,
   },
   {
     id: 9,
     name: 'Streetwear Cap',
     price:'22.00',
-       image: 'https://images.unsplash.com/photo-1618354691372-bf991db92a7d?auto=format&fit=crop&w=600&q=80',
+       image: Cap9,
   },
   {
     id: 10, 
     name : 'Patterned Socks',
     price: "$12.00",
-    image: 'https://images.unsplash.com/photo-1525904097878-94e7d73d0b1a?auto=format&fit=crop&w=600&q=80',
+    image: Socks10,
   },
   {
     id: 11,
     name: 'Layered Chains',
     price: '$30.00',
-    image: 'https://images.unsplash.com/photo-1618354691404-cb9a2aaf3e1c?auto=format&fit=crop&w=600&q=80',
+    image: Chains11,
   }, 
   {
    id: 12,
    name: 'Graffiti Hoodie',
    price: '$49.00',
-   image: 'https://images.unsplash.com/photo-1618354691402-f1173935ae3e?auto=format&fit=crop&w=600&q=80',
+   image: Hoddie12,
   },
   {
     id: 13, 
     name: 'Tie-dye Shirt',
     price: '$27.00',
-    image: 'https://images.unsplash.com/photo-1582727461474-9a1cb1036485?auto=format&fit=crop&w=600&q=80',
+    image: TieDye13,
   },
   {
     id: 14,
     name: 'Minimalist Tote Bag',
     price: '$25.00',
-    image: 'https://images.unsplash.com/photo-1588579239589-f8e1f48b9e38?auto=format&fit=crop&w=600&q=80',
+    image: totebag14,
   },
   {
     id: 15,
     name: 'Flannel Shirt',
     price: '$39.00',
-    image: 'https://images.unsplash.com/photo-1571902943202-507ec2618e56?auto=format&fit=crop&w=600&q=80',
+    image: Shirt15,
   },
   {
     id: 16,
     name: 'Street Utility Vest',
     price: '$70.00',
-    image: 'https://images.unsplash.com/photo-1609220136736-66d89a7f8a94?auto=format&fit=crop&w=600&q=80',
+    image: vest16,
   }
 ];
 
