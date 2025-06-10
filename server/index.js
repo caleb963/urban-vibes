@@ -4,6 +4,9 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import productRoutes from './routes/productRoutes.js';
 
+const stripeRoutes = require('./routes.stripeRoutes');
+app.use('/api/stripe', stripeRoutes);
+
 dotenv.config();
 
 const app = express();
@@ -28,3 +31,5 @@ mongoose.connect(process.env.MONGO_URI, {
   .catch((err) => {
     console.error('❌ Error al conectar a MongoDB:', err);
   });
+
+  

@@ -1,5 +1,11 @@
 import React from 'react';
 import './Cart.css';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+
+
 
 const Cart = ({ cartItems, onRemove, onClear }) => {
     const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -8,6 +14,22 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
     const priceNumber = parseFloat(item.price.replace('$', ''));
     return sum + priceNumber * item.quantity;
   }, 0);
+
+  const handleCheckout = async () => {
+    const stripe = await stripePromise;
+
+    const response = await axios.post('http://localhost:3000/api/stripe/create-checkout-session', {
+        cartItems,
+    });
+
+    const result = await stripe.redirectToCheckout({
+        sessionId: response.data.id,
+    });
+
+    if (result.error) {
+        console.error(result.error.message);
+    }
+};
 
     return (
         <section className="cart">
@@ -45,10 +67,12 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
                         ))}
                     </ul>
                     <div className='cart__summary'>
-                        <p><strong>Total de articulos:</strong> {totalItems}</p>
+                        <p><strong>total Items:</strong> {totalItems}</p>
+                        <p><strong>Total to pay:</strong> ${totalPrice.toFixed(2)}</p>
                     </div>
                     
                     <button className="cart_clear" onClick={onClear}>Empty Cart</button>
+                    <button className="cart_checkout" onClick={handleCheckout}>Pay with Stripe</button>
                 </>
             )}
         </section>

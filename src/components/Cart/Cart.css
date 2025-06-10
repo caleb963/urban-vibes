@@ -103,3 +103,18 @@
     font-size: 1rem;
     color: #f9fafb;
 }
+
+.cart_checkout {
+    background-color: 6772e5;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border:none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart_checkout:hover {
+    background-color: #5469d4;
+}
