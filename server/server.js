@@ -1,20 +1,31 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
+const protectedRoutes = require('./routes/protectedRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-app.use(cors);
+
+app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRoutes);
+app.use('/api', protectedRoutes);
+app.use('/api/user', userRoutes);
+
+
 
 app.post('/api/stripe/create-checkout-session', async (req, res) => {
     const { cartItems } = req.body;
+    console.log("Received cart items:", cartItems);
 
     const line_items = cartItems.map(item => ({
         price_data: {
             currency: 'usd',
                 product_data: {
                     name: item.name,
-                    images: [item.image], 
+                    //images: [item.image], 
                 },
                 unit_amount: parseFloat(item.price.replace('$', '' )) * 100,
             },

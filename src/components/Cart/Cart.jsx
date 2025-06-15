@@ -3,7 +3,7 @@ import './Cart.css';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 
 
@@ -21,6 +21,8 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
     const response = await axios.post('http://localhost:3000/api/stripe/create-checkout-session', {
         cartItems,
     });
+
+    console.log('backend answer:', response.data);
 
     const result = await stripe.redirectToCheckout({
         sessionId: response.data.id,
