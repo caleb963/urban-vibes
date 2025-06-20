@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Products from './components/Products/Products';
 import ContactForm from './components/ContactForm/ContactForm';
 import Cart from './components/Cart/Cart';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
 
 
 function App() {
@@ -43,20 +46,36 @@ function App() {
   const cartCount = cart.reduce(( sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="app-container">
-      <Header cartCount={cartCount} />
+    <>
+    <Header cartCount={cartCount} />
+
+      <Routes>
+        <Route path="/" element={
+          <>      
       <Hero />
       <Products onAddToCart={handleAddToCart} />
-      <Cart
-       cartItems={cart}
-       onRemove={handleRemoveFromCart}
-       onClear={handleClearCart}
-       />
       <div id="contact">
         <ContactForm />
-      </div>
-    </div>
-  );
+         </div>
+        </>
+        }
+        />
+
+        < Route path="/cart"
+          element={
+            <Cart
+              cartItems={cart}
+              onRemove={handleRemoveFromCart}
+              onClear={handleClearCart}
+              />
+          }
+         />
+        
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        </Routes>
+        </>
+  )
 }
 
 export default App;
