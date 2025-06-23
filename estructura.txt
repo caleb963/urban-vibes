@@ -85,6 +85,7 @@
 ./.git/objects/14/183c8bae6c8ef8d46965d9a2854b013204f35b
 ./.git/objects/14/93fa95b553e07f4161e43a632ae52d7d37e139
 ./.git/objects/16
+./.git/objects/16/8c3a32e6d1a8f26d75b102b21d60be58c33b84
 ./.git/objects/16/c096214118b111012ff5d7a85999fefb69dd59
 ./.git/objects/16/c23d9c8af62d4ab5ba0b3ded74ac1eeebffd32
 ./.git/objects/17
@@ -109,6 +110,7 @@
 ./.git/objects/1c
 ./.git/objects/1c/381f47b7a90d65175f62dc9d9a3c5c7a0df2db
 ./.git/objects/1d
+./.git/objects/1d/197c83eeb7cf25f449231180de567cba80ef45
 ./.git/objects/1d/e02f9d383d7a0c8b85b249a70df896372a31c5
 ./.git/objects/1f
 ./.git/objects/1f/1ea8d1b1ab40cf96a6ad35a44b29d64f25150d
@@ -163,6 +165,8 @@
 ./.git/objects/2f
 ./.git/objects/2f/1c547664b94caf76c3d8db93520acba51ddac7
 ./.git/objects/2f/50ae777c56d7e699bcf2a1ffe0c5786fd13694
+./.git/objects/30
+./.git/objects/30/bac2090b91057dbf90995ee137c85ea7d80f14
 ./.git/objects/31
 ./.git/objects/31/17c62fb282d91548b7bab17f8cd2b0718d04de
 ./.git/objects/32
@@ -257,6 +261,8 @@
 ./.git/objects/56
 ./.git/objects/56/cfe574f3a260698536b85fe1924b6c3c7474bf
 ./.git/objects/56/d7356805c340898f18adf6af9d5c6bb1f5ae51
+./.git/objects/58
+./.git/objects/58/90eb441ec8b7a893e4f59d4515ee289fa61c1c
 ./.git/objects/59
 ./.git/objects/59/107c7928e5c419b8e0fa7a8ef395aa89e9a708
 ./.git/objects/59/220c93f452ab3d58fdf6629b0525e206854824
@@ -341,6 +347,7 @@
 ./.git/objects/73
 ./.git/objects/73/90aca883d831c2eec8e87097ce0946c9fa1718
 ./.git/objects/74
+./.git/objects/74/5d643fa092a96673e9627f18f2d6d1c78e19f5
 ./.git/objects/74/e0dad0aba31525c0bad22adcb0b390e40f42ca
 ./.git/objects/75
 ./.git/objects/75/5858cebaa2952fb75a6cbfd6ff15c5564d82fc
@@ -377,6 +384,7 @@
 ./.git/objects/7f/58026ae00b1a3335fadcfd96cbe64d45d46348
 ./.git/objects/80
 ./.git/objects/80/4295b27a7e56119915b39bb964387cb382bf1f
+./.git/objects/80/9106e7e58f373a4b9cf71edeff84e8cc86df1b
 ./.git/objects/81
 ./.git/objects/81/08cd58b10b33650668f528e5d0ab1e00ff1f9c
 ./.git/objects/81/23a484e48e5b63593bf0a80bc68b394d28e64a
@@ -415,12 +423,16 @@
 ./.git/objects/8d/c37b8a64b47fdd714f5c48c944b233eeef9bf9
 ./.git/objects/8f
 ./.git/objects/8f/21923ce933f57610086d50387b7616fd749548
+./.git/objects/91
+./.git/objects/91/bb97910dfcccfc7d24822ca249bd827dc51c46
 ./.git/objects/92
 ./.git/objects/92/43a0e7a77c5f8e430a7ff037815db5a0ae62d1
 ./.git/objects/92/f682c2b98f284400489a4e978646e00c195cb4
 ./.git/objects/93
 ./.git/objects/93/0c52c70964db39acd3ddffc2c440f6d2fc5057
 ./.git/objects/93/49ff0003e6033266154b6cf7a60d83810d86e9
+./.git/objects/93/4f061c626cd5cb0e28be458e5bcde90eb4e970
+./.git/objects/93/f976e716cef7779b2da812f49e7f838af80540
 ./.git/objects/95
 ./.git/objects/95/a1ed3720748c3af1f3e3de9216022857588752
 ./.git/objects/96
@@ -430,6 +442,7 @@
 ./.git/objects/97/c07a8461337fe834a021043a784df14dc5ffc7
 ./.git/objects/98
 ./.git/objects/98/8a58e560920b937c25ab0823af6a52d9d91c73
+./.git/objects/98/fe46b4bbc4ab82de5635e00517a32630e6f7b3
 ./.git/objects/99
 ./.git/objects/99/0e0fb87d70cfc3242201ca3d0595668a29ab21
 ./.git/objects/9c
@@ -527,6 +540,7 @@
 ./.git/objects/bc
 ./.git/objects/bc/283db14a7db81a167d37042a0f181b6d925da8
 ./.git/objects/bc/660b9881df7878e38a3e9b3e4aed4df1541d03
+./.git/objects/bc/cc149310a15616fb6311210a61892d9daaad5b
 ./.git/objects/bf
 ./.git/objects/bf/0bd4b77fcf3aaa854ce12aac2697d6292ade9d
 ./.git/objects/bf/7ce2a846ca2f2354904624045d553759c0be56
@@ -538,6 +552,7 @@
 ./.git/objects/c1/bc0adc4890427f45e6ab0279996924decf160d
 ./.git/objects/c2
 ./.git/objects/c2/16b598aee475fb48344a1d39ea4d1b6db18d91
+./.git/objects/c2/dd94334292c073505ba0c0145fae9b0efdc5c1
 ./.git/objects/c4
 ./.git/objects/c4/2cc553ac58abf4266413428f3e75a7dfce11b5
 ./.git/objects/c4/6a6e0b8613e6357a7919b11327ec2ec160dcb0
@@ -566,6 +581,8 @@
 ./.git/objects/cf/86b94f8e1a9133489693ab47204a920addb34c
 ./.git/objects/cf/a952cfc9e273d379aa23b68528c2d0d5c42bea
 ./.git/objects/cf/c062c11e5272887118a657c20fc7321c7d85b4
+./.git/objects/d0
+./.git/objects/d0/411f49ae065632c5e9dbf75c3903795826d3d5
 ./.git/objects/d1
 ./.git/objects/d1/6050d8111b3ca1b17d6ff008e346d56e5832c1
 ./.git/objects/d2
@@ -10031,6 +10048,9 @@
 ./src/assets/images/tote-bag14.png
 ./src/assets/images/urban-cap9.png
 ./src/components
+./src/components/Auth
+./src/components/Auth/Login.jsx
+./src/components/Auth/Register.jsx
 ./src/components/Cart
 ./src/components/Cart/Cart.css
 ./src/components/Cart/Cart.jsx
@@ -10046,13 +10066,11 @@
 ./src/components/Hero
 ./src/components/Hero/Hero.css
 ./src/components/Hero/Hero.jsx
-./src/components/Login.jsx
 ./src/components/Products
 ./src/components/Products/AddProduct.css
 ./src/components/Products/AddProduct.jsx
 ./src/components/Products/Products.css
 ./src/components/Products/Products.jsx
-./src/components/Register.jsx
 ./src/context
 ./src/context/AuthContext.jsx
 ./src/index.css

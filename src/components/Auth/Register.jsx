@@ -27,10 +27,7 @@ function Register({ onAuth }) {
         }
 
         try {
-            const response = await axios.post("http://localhost:3000/api/auth/register", {
-                email: email,
-                password: password
-            });
+            const response = await axios.post("/api/auth/register", {email: email, password: password});
 
             const token = response.data.token;
             if (token) {
@@ -44,13 +41,10 @@ function Register({ onAuth }) {
             }
             navigate("/");
         } catch (error) {
-            if (error.response && error.response.data && error.response.data.message) {
-                alert("Error:" + error.response.data.message);
-            } else {
-                alert("An error occurred while registering. Please try again later.");
+            const msg = error.response?.data?.message;
+            alert(msg ? `Error: ${msg}` : "An error occurred while registering. Please try again later.");
             }
-        }
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit} className="register-form">
@@ -70,7 +64,6 @@ function Register({ onAuth }) {
                 <label htmlFor="password">Password</label>
                 <input
                 type="password" 
-                pl
                 id="password"
                 name="password"
                 value={password}

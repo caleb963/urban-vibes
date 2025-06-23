@@ -1,35 +1,41 @@
+import 'dotenv/config'
 import express from 'express';
+
 import mongoose from 'mongoose';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
 import productRoutes from './routes/productRoutes.js';
+import stripeRoutes from './routes/stripeRoutes.js';
 
-const stripeRoutes = require('./routes.stripeRoutes');
-app.use('/api/stripe', stripeRoutes);
-
-dotenv.config();
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/auth', authRoutes);
+app.use('/api/stripe', stripeRoutes);
 app.use('/api/products', productRoutes);
 
-const PORT = process.env.PORT || 5000;
+const {PORT = 3000, MONGO_URI} = process.env;
+if (!MONGO_URI) {
+  console.error('MONGO_URI no está definido en .env');
+  process.exit(1);
+}
 
-mongoose.connect(process.env.MONGO_URI, {
+
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
   .then(() => {
-    console.log('🟢 MongoDB conectado');
-    app.get('/', (req, res) => {
-      res.send('Backend server is running');
-    });
+    console.log('MongoDB conectado');
     app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
-  })
+    })
   .catch((err) => {
-    console.error('❌ Error al conectar a MongoDB:', err);
+    console.error('Error al conectar a MongoDB:', err);
+    process.exit(1);
   });
 
   

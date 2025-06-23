@@ -10,6 +10,20 @@ import Register from './components/Auth/Register';
 
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const handleAuth = (userData) => {
+    setUser(userData);
+    localStorage.setItem('user', JSON.stringify(userData));
+  };
+
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -47,7 +61,7 @@ function App() {
 
   return (
     <>
-    <Header cartCount={cartCount} />
+    <Header cartCount={cartCount} user={user}/>
 
       <Routes>
         <Route path="/" element={
@@ -71,11 +85,11 @@ function App() {
           }
          />
         
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login onAuth={handleAuth} />} />
+        <Route path="/register" element={<Register onAuth={handleAuth} />} />
         </Routes>
         </>
-  )
+  );
 }
 
 export default App;

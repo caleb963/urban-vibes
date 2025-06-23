@@ -1,13 +1,13 @@
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
+import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
 
 const generateToken = (userId) => {
-    return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-        expiresIn: '7d',
-    });
+    return jwt.sign({ id: userId }, process.env.JWT_SECRET, 
+        {expiresIn: '7d'},
+    );
 };
 
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -19,11 +19,12 @@ exports.register = async (req, res) => {
 
         res.status(201).json({ token, user: { id: user._id, email: user.email } });
     } catch (err) {
-        res.status(500).json({ message: 'Server error' });
+        console.error('Error in register:', err);
+        res.status(500).json({ message: 'Server error', error: err.message });
     }
 };
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -31,12 +32,13 @@ exports.login = async (req, res) => {
         if (!user) return res.status(400).json({ message: 'Invalid email or password' });
 
         const isMatch = await user.matchPassword(password);
-        if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
-
+        if (!isMatch) {
+            return res.status(400).json({ message: 'Invalid email or password' });
+        }
         const token = generateToken(user._id);
-
-        res.json({ token, user: { id:user._id, email: user,email } });
+        res.json({ token, user: { id: user._id, email: user.email } });
     } catch (err) {
+        console.error('Error in login:', err);
         res.status(500).json({ message: 'Server error' });
     }
 };

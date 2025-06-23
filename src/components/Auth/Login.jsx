@@ -22,9 +22,7 @@ function Login({ onAuth }) {
         }
         
         try {
-          const response = await axios.post( "http://localhost:3000/api/auth/login", 
-            { email, password }    
-          );
+          const response = await axios.post( "/api/auth/login",{ email, password });
 
           const token = response.data.token;
           if (token) {
@@ -59,8 +57,8 @@ function Login({ onAuth }) {
              />
              </div>
              <div>
-                <label htmlFor="password"></label>
-                <inpu 
+                <label htmlFor="password">Password:</label>
+                <input
                     type="password"
                     id="password"
                     name="password"
@@ -69,7 +67,7 @@ function Login({ onAuth }) {
                     required
                 />
              </div>
-             <button type="submit"></button>
+             <button type="submit">Login</button>
         </form>
     );
 }
