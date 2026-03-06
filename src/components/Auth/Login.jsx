@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useContext } from 'react';
+import api from '../../api.js';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext.jsx';
 
-function Login({ onAuth }) {
+function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -17,24 +19,14 @@ function Login({ onAuth }) {
 
         const emailRegex = /\S+@\S+\.\S+/;
         if (!emailRegex.test(email)) {
-            alert("Please, enter a valid email adress.");
+            alert("Please, enter a valid email address.");
             return;
         }
         
         try {
-          const response = await axios.post( "/api/auth/login",{ email, password });
+          const response = await api.post('/api/auth/login', { email, password });
 
-          const token = response.data.token;
-          if (token) {
-            localStorage.setItem("token", token);
-          }
-
-          if (onAuth && response.data.user) {
-            onAuth(response.data.user);
-          } else if (onAuth) {
-            onAuth(null);
-          }
-
+          login(response.data.user, response.data.token);
           navigate("/");
         } catch (error) {
             const msg = error.response?.data?.message;

@@ -23,8 +23,8 @@ const Header = ({ cartCount }) => {
             </div>
 
             <nav className="header__nav">
-                <Link to="#products" className="header__link">Products</Link>
-                <Link to="#contact" className="header__link">Contact</Link>
+                <a href="#products" className="header__link">Products</a>
+                <a href="#contact" className="header__link">Contact</a>
 
                 <div className="cart-indicator" title="svg cart">
                     <Link to="/cart" className="cart-link">
@@ -41,11 +41,11 @@ const Header = ({ cartCount }) => {
             {!user ? (
                 <>
                  <Link to="/login" className="header__link">Login</Link>
-                 <Link to="/register" className="header_link">Register</Link>
+                 <Link to="/register" className="header__link">Register</Link>
                 </>
             ) : (
                 <>
-                    <span className="header__user">Welcome, {user.name}</span>
+                    <span className="header__user">Welcome, {user.email}</span>
                     <button className="header__logout" onClick={handleLogout}>Logout</button>
                 </>
             )}

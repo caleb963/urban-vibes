@@ -11,7 +11,7 @@ const Hero = () => {
             <div className='hero__content'>
                 <h1 className="hero__title">Explore the Urban Fashion</h1>
                 <p className="hero__subtitle">Attitude and Style</p>
-                <a href='#products' className='hero__cta'>Ver Coleccion</a>
+                <a href='#products' className='hero__cta'>View Collection</a>
             </div>
         </section>
     );

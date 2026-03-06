@@ -1,11 +1,13 @@
-import { useState } from "react";
-import axios from 'axios';
+import { useState, useContext } from "react";
+import api from '../../api.js';
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../context/AuthContext.jsx';
 
-function Register({ onAuth }) {
+function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,18 +29,9 @@ function Register({ onAuth }) {
         }
 
         try {
-            const response = await axios.post("/api/auth/register", {email: email, password: password});
+            const response = await api.post('/api/auth/register', { email, password });
 
-            const token = response.data.token;
-            if (token) {
-                localStorage.setItemI("token", token);
-            }
-
-            if (onAuth && response.data.user) {
-                onAuth(response.data.user);
-            } else if (onAuth) {
-                onAuth(null);
-            }
+            login(response.data.user, response.data.token);
             navigate("/");
         } catch (error) {
             const msg = error.response?.data?.message;

@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
+import api from '../../api.js';
 import './ContactForm.css';
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setStatus(null);
+    try {
+      const res = await api.post('/api/contact', formData);
+      setStatus({ success: true, message: res.data.message });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      const msg = error.response?.data?.message;
+      setStatus({ success: false, message: msg || 'Something went wrong. Please try again.' });
+    }
   };
 
   return (
@@ -23,7 +29,7 @@ const ContactForm = () => {
       <input
         type="text"
         name="name"
-        placeholder="Tu nombre"
+        placeholder="Your name"
         value={formData.name}
         onChange={handleChange}
         required
@@ -31,19 +37,24 @@ const ContactForm = () => {
       <input
         type="email"
         name="email"
-        placeholder="Tu correo"
+        placeholder="Your email"
         value={formData.email}
         onChange={handleChange}
         required
       />
       <textarea
         name="message"
-        placeholder="Tu mensaje"
+        placeholder="Your message"
         value={formData.message}
         onChange={handleChange}
         required
       />
-      <button type="submit">Enviar</button>
+      {status && (
+        <p className={status.success ? 'contact-form__success' : 'contact-form__error'}>
+          {status.message}
+        </p>
+      )}
+      <button type="submit">Send</button>
     </form>
   );
 };

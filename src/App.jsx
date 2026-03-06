@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
@@ -7,23 +7,10 @@ import ContactForm from './components/ContactForm/ContactForm';
 import Cart from './components/Cart/Cart';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
-
-  const handleAuth = (userData) => {
-    setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
-  };
-
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -32,12 +19,12 @@ function App() {
   // Function to add a product to the cart
   const handleAddToCart = (product) => {
     setCart((prevCart) => {
-      const existing = prevCart.find((item) => item.id === product.id);
+      const existing = prevCart.find((item) => item._id === product._id);
 
     if (existing) {
-      return prevCart.map((item) => 
-        item.id === product.id
-       ? { ...item, quantity: item.quantity + 1 } : item
+      return prevCart.map((item) =>
+        item._id === product._id
+          ? { ...item, quantity: item.quantity + 1 } : item
       );
     }  
 
@@ -46,7 +33,7 @@ function App() {
   };
 
   const handleRemoveFromCart = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCart((prevCart) => prevCart.filter((item) => item._id !== id));
   };
 
   const handleClearCart = () => {
@@ -61,7 +48,7 @@ function App() {
 
   return (
     <>
-    <Header cartCount={cartCount} user={user}/>
+    <Header cartCount={cartCount} />
 
       <Routes>
         <Route path="/" element={
@@ -85,9 +72,10 @@ function App() {
           }
          />
         
-        <Route path="/login" element={<Login onAuth={handleAuth} />} />
-        <Route path="/register" element={<Register onAuth={handleAuth} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         </Routes>
+      <Footer />
         </>
   );
 }

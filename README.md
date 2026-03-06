@@ -1,16 +1,103 @@
-Urban Vibes is a fullstack web application built to showcase a modern urban fashion e-commerce experience. The project presents a dynamic and responsive landing page where users can explore a curated collection of graffiti-inspired streetwear products. It integrates both frontend and backend functionality to simulate a real-world online store, using React for the client interface and Express + MongoDB for the server and database.
+# Abissal Blessed
 
-🛠 Technologies Used  
-- React & Vite – For building a fast and modern frontend.  
-- CSS (BEM) – For clean and scalable styling.  
-- Node.js & Express – Backend REST API server.  
-- MongoDB & Mongoose – For storing and managing product data.  
+A fullstack e-commerce web application for an urban streetwear brand. Users can browse products, manage a cart, authenticate, and checkout via Stripe.
 
-This project demonstrates a strong understanding of fullstack development, API integration, and responsive UI design. It serves as a practical example of building a complete MERN-stack application from scratch. The layout is optimized for both mobile and desktop, ensuring an engaging and smooth experience for users across all devices.
+## Tech Stack
 
-📂 Installation  
-To install this project locally, run the following:
+**Frontend**
+- React 19 + Vite
+- React Router v7
+- Axios
+- Stripe.js
 
+**Backend**
+- Node.js + Express 5
+- MongoDB + Mongoose
+- JSON Web Tokens (JWT)
+- bcrypt
+- Stripe
+
+## Project Structure
+
+```
+abissal-blessed/
+├── src/                        # Frontend (React)
+│   ├── components/
+│   │   ├── Auth/               # Login, Register
+│   │   ├── Cart/               # Cart page + Stripe checkout
+│   │   ├── ContactForm/        # Contact form
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Hero/
+│   │   └── Products/           # Product listing + AddProduct
+│   ├── context/
+│   │   └── AuthContext.jsx     # Global auth state
+│   ├── api.js                  # Shared axios instance
+│   └── main.jsx
+└── server/                     # Backend (Express)
+    ├── controllers/
+    ├── middleware/
+    ├── models/
+    ├── routes/
+    └── index.js
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB (local or Atlas)
+- Stripe account
+
+### Environment Variables
+
+**`server/.env`**
+```
+PORT=3000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+```
+
+**`.env`** (frontend root)
+```
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+```
+
+### Installation
+
+**Install frontend dependencies:**
 ```bash
-git clone https://github.com/caleb963/urban-vibes.git
-cd urban-vibes
+npm install
+```
+
+**Install backend dependencies:**
+```bash
+cd server
+npm install
+```
+
+### Running the App
+
+**Start the backend:**
+```bash
+cd server
+npm run dev
+```
+
+**Start the frontend** (in a separate terminal):
+```bash
+npm run dev
+```
+
+The frontend runs on `http://localhost:5173` and the backend on `http://localhost:3000`.
+
+## Features
+
+- Browse and add products to cart
+- Persistent cart via localStorage
+- User registration and login with JWT authentication
+- Stripe checkout integration
+- Contact form
+- Admin product creation via AddProduct component

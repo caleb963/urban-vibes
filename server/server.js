@@ -1,11 +1,13 @@
-require('dotenv').config();
-const express = require('express');
+import 'dotenv/config';
+import express from 'express';
+import Stripe from 'stripe';
+import cors from 'cors';
+import authRoutes from './routes/authRoutes.js';
+import protectedRoutes from './routes/protectedRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+
 const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const cors = require('cors');
-const authRoutes = require('./routes/authRoutes');
-const protectedRoutes = require('./routes/protectedRoutes');
-const userRoutes = require('./routes/userRoutes');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 
 app.use(cors());
@@ -27,7 +29,7 @@ app.post('/api/stripe/create-checkout-session', async (req, res) => {
                     name: item.name,
                     //images: [item.image], 
                 },
-                unit_amount: parseFloat(item.price.replace('$', '' )) * 100,
+                unit_amount: Math.round(item.price * 100),
             },
             quantity: item.quantity,
     }));

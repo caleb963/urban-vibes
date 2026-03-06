@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cart.css';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
+import api from '../../api.js';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -10,26 +10,25 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 const Cart = ({ cartItems, onRemove, onClear }) => {
     const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-  const totalPrice = cartItems.reduce((sum, item) => {
-    const priceNumber = parseFloat(item.price.replace('$', ''));
-    return sum + priceNumber * item.quantity;
-  }, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleCheckout = async () => {
-    const stripe = await stripePromise;
+    try {
+        const stripe = await stripePromise;
 
-    const response = await axios.post('http://localhost:3000/api/stripe/create-checkout-session', {
-        cartItems,
-    });
+        const response = await api.post('/api/stripe/create-checkout-session', {
+            cartItems,
+        });
 
-    console.log('backend answer:', response.data);
+        const result = await stripe.redirectToCheckout({
+            sessionId: response.data.id,
+        });
 
-    const result = await stripe.redirectToCheckout({
-        sessionId: response.data.id,
-    });
-
-    if (result.error) {
-        console.error(result.error.message);
+        if (result.error) {
+            console.error(result.error.message);
+        }
+    } catch (error) {
+        console.error('Checkout error:', error);
     }
 };
 
@@ -57,14 +56,14 @@ const Cart = ({ cartItems, onRemove, onClear }) => {
             ) : (
                 <>
                     <ul className="cart__list">
-                        {cartItems.map((item, index) => (
-                            <li key={index} className="cart__item">
+                        {cartItems.map((item) => (
+                            <li key={item._id} className="cart__item">
                                 <img src={item.image} alt={item.name} className="cart__image" />
                                 <div>
                                     <p>{item.name}</p>
-                                    <p>{item.quantity} x ${item.price}</p>
+                                    <p>{item.quantity} x ${item.price.toFixed(2)}</p>
                                 </div>
-                                <button className="cart__remove" onClick={() => onRemove(item.id)}>X</button>
+                                <button className="cart__remove" onClick={() => onRemove(item._id)}>X</button>
                             </li>
                         ))}
                     </ul>
