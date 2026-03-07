@@ -23,8 +23,8 @@ const Header = ({ cartCount }) => {
             </div>
 
             <nav className="header__nav">
-                <a href="#products" className="header__link">Products</a>
-                <a href="#contact" className="header__link">Contact</a>
+                <a href="/#products" className="header__link">Products</a>
+                <a href="/#contact" className="header__link">Contact</a>
 
                 <div className="cart-indicator" title="svg cart">
                     <Link to="/cart" className="cart-link">
